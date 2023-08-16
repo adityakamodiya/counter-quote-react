@@ -12,27 +12,40 @@ function App() {
 
   function Callapi(){
     
-var IndisabledBtn = document.querySelector('.increment')
-var DedisabledBtn = document.querySelector('.decrement')
-    console.log(IndisabledBtn)
-    IndisabledBtn.disabled = true
-    DedisabledBtn.disabled = true
+// var IndisabledBtn = document.querySelector('.increment')
+// var DedisabledBtn = document.querySelector('.decrement')
+//     console.log(IndisabledBtn)
+//     IndisabledBtn.disabled = true
+//     DedisabledBtn.disabled = true
 
+
+
+
+   
     axios.get('https://api.quotable.io/quotes/random')
     .then((Response)=>{
     console.log(Response.data[0].content)
     setquote(Response.data[0].content)  
-    })
-    IndisabledBtn.disabled = false
-    DedisabledBtn.disabled = false
+  })
+   
+    
+
+  
+  
+
+
+    // IndisabledBtn.disabled = false
+    // DedisabledBtn.disabled = false
   }
 
 function Incrvalue(){
+ 
      
 var IndisabledBtn = document.querySelector('.increment')
+var DedisabledBtn = document.querySelector('.decrement')
 // document.getElementsByClassName("increment").disabled = true
 // console.log(disabledBtn)
-
+DedisabledBtn.disabled = false
 
 
 if(num==4)
@@ -42,14 +55,17 @@ if(num==4)
 if(num<10)
 {
   setnum(num+1)
-  
+  setquote('')
+  // Callapi();
 }
 
 else{
 IndisabledBtn.disabled = true
+Callapi()
   // alert('this is max value')
 }
 
+console.log()
 }
 
 
@@ -58,22 +74,26 @@ function Decrvalue()
 {
   
 var DedisabledBtn = document.querySelector('.decrement')
+var IndisabledBtn = document.querySelector('.increment')
+    IndisabledBtn.disabled = false
+
     
 
-
-if(num==6)
-  {
-    Callapi();
-    console.log('show')
-  }
   if(num>0){
     setnum(num-1)
+    // Callapi();
+    setquote('')
   }
   else 
   {
 DedisabledBtn.disabled = true
   // alert('this is min value')
 }
+if(num==6)
+  {
+    Callapi();
+    console.log('show')
+  }
 }
 
   return (
