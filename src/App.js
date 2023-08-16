@@ -39,7 +39,7 @@ function App() {
   }
 
 function Incrvalue(){
- 
+   console.log(num)
      
 var IndisabledBtn = document.querySelector('.increment')
 var DedisabledBtn = document.querySelector('.decrement')
@@ -48,7 +48,7 @@ var DedisabledBtn = document.querySelector('.decrement')
 DedisabledBtn.disabled = false
 
 
-if(num==4)
+if(num==4 || num ==9)
 {
   Callapi();
 }
@@ -59,11 +59,11 @@ if(num<10)
   // Callapi();
 }
 
-else{
-IndisabledBtn.disabled = true
-Callapi()
-  // alert('this is max value')
-}
+// else{
+// IndisabledBtn.disabled = true
+// Callapi()
+//   // alert('this is max value')
+// }
 
 console.log()
 }
@@ -89,7 +89,7 @@ var IndisabledBtn = document.querySelector('.increment')
 DedisabledBtn.disabled = true
   // alert('this is min value')
 }
-if(num==6)
+if(num==6 )
   {
     Callapi();
     console.log('show')
@@ -99,17 +99,30 @@ if(num==6)
   return (
     <div className="counter-widget">
       <div className="count"></div>
+     { 
+     (num==10)?
       <button
+        className="increment" disabled onClick={Incrvalue}
+      >
+        Increment
+      </button>: <button
         className="increment"  onClick={Incrvalue}
       >
         Increment
-      </button>
+      </button>}
       <h1>{num}</h1>
-      <button
-        className="decrement" onClick={Decrvalue}
+    {   
+    (num ==0)?
+      <button  
+        className="decrement" disabled onClick={Decrvalue}
+      >
+        Decrement
+      </button>:<button  
+        className="decrement"  onClick={Decrvalue}
       >
         Decrement
       </button>
+      }
 
         <div className="quote">Random Quote: {quote}</div>
 
